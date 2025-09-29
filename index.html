@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Tidur Sayang</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8a6bc9;
+            --secondary-color: #6c5ce7;
+            --accent-color: #fd79a8;
+            --dark-color: #2d3436;
+            --light-color: #f7f7f7;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Poppins', sans-serif;
+            color: var(--light-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container-custom {
+            max-width: 1200px;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        .header-section {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .header-section h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .header-section p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .moon-section {
+            position: relative;
+            height: 200px;
+            margin: 3rem 0;
+        }
+        
+        .moon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 30px 30px, #f9f3cc, #f5e273);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #f5e273, 0 0 80px rgba(245, 226, 115, 0.5);
+            animation: moonGlow 4s ease-in-out infinite alternate;
+        }
+        
+        .moon::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            width: 30px;
+            height: 30px;
+            background-color: #e6d46a;
+            border-radius: 50%;
+            box-shadow: 40px 20px 0 -5px #e6d46a, 
+                        20px 60px 0 -10px #e6d46a,
+                        60px 60px 0 -7px #e6d46a;
+        }
+        
+        @keyframes moonGlow {
+            0% { box-shadow: 0 0 40px #f5e273, 0 0 80px rgba(245, 226, 115, 0.5); }
+            100% { box-shadow: 0 0 50px #f5e273, 0 0 100px rgba(245, 226, 115, 0.7); }
+        }
+        
+        .message-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.3s ease;
+        }
+        
+        .message-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .message-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .message-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .romantic-quote {
+            font-style: italic;
+            text-align: center;
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent-color);
+            background: rgba(253, 121, 168, 0.1);
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+        
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .footer-section {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .music-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .song-title {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 3rem;
+            }
+            
+            .header-section p {
+                font-size: 1.2rem;
+            }
+            
+            .message-card h3 {
+                font-size: 2rem;
+            }
+            
+            .moon {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .message-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Stars -->
+    <div class="stars-container" id="starsContainer"></div>
+    
+    <div class="container container-custom">
+        <!-- Header Section -->
+        <div class="header-section">
+            <h1>Selamat Tidur, Sayangku</h1>
+            <p>Malam ini dan selamanya, kamu adalah bintang dalam hidup dimas</p>
+        </div>
+        
+        <!-- Moon Section -->
+        <div class="moon-section">
+            <div class="moon"></div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="message-card">
+                    <h3>Untuk kamu yang Terindah</h3>
+                    <p>Sayangku, saat malam tiba dan kamu bersiap untuk beristirahat, dimas ingin kamu tahu betapa berartinya kamu bagi dimas.</p>
+                    
+                    <div class="romantic-quote">
+                        "Dalam setiap mimpi dimas, hanya ada kamu. Dalam setiap nafas dimas, hanya untuk kamu."
+                    </div>
+                    
+                    <p>Tidurlah dengan nyenyak, bidadari dimas. Biarkan bintang-bintang menjaga kamu, bulan menemani kamu, dan mimpi indah menghampiri kamu.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="message-card">
+                    <h3>Doa dimas untuk kamu</h3>
+                    <p>Malam ini, dimas berdoa agar:</p>
+                    <ul>
+                        <li>Kamu mendapatkan istirahat yang cukup</li>
+                        <li>Mimpi indah selalu menyertai kamu</li>
+                        <li>Kamu bangun dengan energi baru dan senyuman</li>
+                        <li>Hari esok membawa kebahagiaan untuk kamu</li>
+                    </ul>
+                    
+                    <div class="romantic-quote">
+                        "Tidur dimas akan lebih indah karena tahu kamu juga sedang beristirahat dengan damai."
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Second Row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="message-card text-center">
+                    <h3>Selamat Malam, Cintaku</h3>
+                    <p>Meskipun jarak mungkin memisahkan kita saat ini, ketahuilah bahwa pikiran dimas selalu bersama kamu. Dimas merindukan senyuman kamu, tawa kamu, dan segala hal tentang kamu.</p>
+                    
+                    <p class="romantic-quote">
+                        "Tidurlah sayang, esok adalah hari baru yang penuh harapan. Dimas akan selalu ada untuk kamu, sekarang dan selamanya."
+                    </p>
+                    
+                    <div class="music-controls">
+                        <button id="playBtn" class="music-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="pauseBtn" class="music-btn">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button id="stopBtn" class="music-btn">
+                            <i class="fas fa-stop"></i>
+                        </button>
+                    </div>
+                    <div class="song-title">Lagu: Romantic Night - Sleep Music</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer-section">
+            <p>Dibuat dengan <i class="fas fa-heart" style="color: var(--accent-color);"></i> untuk orang tersayang</p>
+            <p class="mt-2">© 2025 - Selalu untuk kamu</p>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="romanticSong" loop>
+        <source src="ssstik.io_1759166841908.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const romanticSong = document.getElementById('romanticSong');
+            const playBtn = document.getElementById('playBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const starsContainer = document.getElementById('starsContainer');
+            
+            // Create stars for background
+            function createStars() {
+                const starsCount = 150;
+                
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    
+                    // Random size between 1-3px
+                    const size = Math.random() * 2 + 1;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    
+                    // Random position
+                    star.style.left = `${Math.random() * 100}vw`;
+                    star.style.top = `${Math.random() * 100}vh`;
+                    
+                    // Random animation delay
+                    star.style.animationDelay = `${Math.random() * 5}s`;
+                    
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            // Music controls
+            playBtn.addEventListener('click', function() {
+                romanticSong.play();
+            });
+            
+            pauseBtn.addEventListener('click', function() {
+                romanticSong.pause();
+            });
+            
+            stopBtn.addEventListener('click', function() {
+                romanticSong.pause();
+                romanticSong.currentTime = 0;
+            });
+            
+            // Auto-play music with user interaction
+            document.body.addEventListener('click', function initAudio() {
+                // Play music softly on first interaction
+                romanticSong.volume = 0.3;
+                romanticSong.play().catch(e => {
+                    console.log("Autoplay prevented:", e);
+                });
+                
+                // Remove this event listener after first interaction
+                document.body.removeEventListener('click', initAudio);
+            });
+            
+            // Initialize stars
+            createStars();
+            
+            // Add subtle floating animation to message cards
+            const messageCards = document.querySelectorAll('.message-card');
+            messageCards.forEach((card, index) => {
+                card.style.animation = `float 6s ease-in-out ${index * 0.5}s infinite alternate`;
+            });
+            
+            // Add CSS for floating animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float {
+                    0% { transform: translateY(0px); }
+                    100% { transform: translateY(-10px); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
